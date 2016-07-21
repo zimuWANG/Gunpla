@@ -1,0 +1,52 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="com.example.android.gunpla.Main22Activity"
+        android:background="#C8E6C9">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="Zeta Gundam" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="150dp"
+                android:layout_weight="1"
+                android:src="@drawable/z1" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="150dp"
+                android:layout_weight="1"
+                android:src="@drawable/z2" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="Mobile Suit Zeta Gundam is a 1985 Japanese television anime series, the second installment in the Gundam franchise, and a sequel to the original Mobile Suit Gundam. The show was created and directed by Yoshiyuki Tomino, with character designs by Yoshikazu Yasuhiko, while the series' mechanical designs is split among Kunio Okawara, Mamoru Nagano, and Kazumi Fujita. The series was originally aired on Nagoya Broadcasting Network and its sister ANN stations between 1985 and 1986. Between 2005 and 2006, the series was reproduced and compiled into a movie trilogy, Mobile Suit Zeta Gundam: A New Translation. Though still directed by Tomino, it involved many changes in the original storyline."
+            />
+
+
+    </LinearLayout>
+</ScrollView>

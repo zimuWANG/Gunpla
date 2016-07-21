@@ -1,4 +1,5 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -11,43 +12,53 @@
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
-        tools:context="com.example..android.gunpla.MainActivity">
+        tools:context="com.example..android.gunpla.MainActivity"
+        android:background="#C8E6C9">
 
         <EditText
             android:id="@+id/name_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Order's Name"
+            android:hint="Name"
             android:inputType="textCapWords" />
 
 
         <TextView
-            android:id="@+id/products_text_view"
+        android:id="@+id/products_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+        android:text="produts"
+        android:textAllCaps="true" />
+
+        <TextView
+            android:id="@+id/imformation_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="16dp"
-            android:paddingTop="16dp"
-            android:text="produts"
+            android:text="touch pictures, get more information"
+            android:textSize="8sp"
             android:textAllCaps="true" />
 
-
-       <ImageView
-           android:layout_width="match_parent"
-           android:layout_height="210dp"
-           android:src="@drawable/rx78" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="210dp"
+            android:src="@drawable/rx78"
+            android:onClick="rx78"/>
 
         <CheckBox
             android:id="@+id/rx782_checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="24dp"
-            android:text="RX-79-2 GUNDAM / $ 50"
+            android:text="RX-78-2 GUNDAM / $ 50"
             android:textSize="16sp" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="210dp"
-            android:src="@drawable/r10" />
+            android:src="@drawable/r10"
+            android:onClick="r10"/>
 
         <CheckBox
             android:id="@+id/r10_checkbox"
@@ -60,7 +71,8 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="210dp"
-            android:src="@drawable/gp01" />
+            android:src="@drawable/gp01"
+            android:onClick="gp01"/>
 
         <CheckBox
             android:id="@+id/gp01_checkbox"
@@ -73,7 +85,8 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="210dp"
-            android:src="@drawable/d2" />
+            android:src="@drawable/d2"
+            android:onClick="d2"/>
 
         <CheckBox
             android:id="@+id/d2_checkbox"
@@ -93,90 +106,115 @@
             android:textAllCaps="true" />
 
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
         <LinearLayout
-            android:layout_weight="1"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ImageView
-             android:layout_width="wrap_content"
-             android:layout_height="150dp"
-             android:src="@drawable/LED" />
+            android:orientation="horizontal">
 
             <LinearLayout
-
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-                <Button
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:onClick="increment"
-                    android:text="+" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="150dp"
+                    android:src="@drawable/yellow" />
+
 
                 <TextView
-                    android:id="@+id/quantity_text_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
-                    android:text="0"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
+                    android:paddingLeft="20dp"
+                    android:text="LED Yellow / $ 10" />
 
-                <Button
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:onClick="decrement"
-                    android:text="-" />
+                <LinearLayout
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginLeft="15dp"
+                        android:onClick="increment1"
+                        android:text="+" />
+
+                    <TextView
+                        android:id="@+id/ledy_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:text="0"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp" />
+
+                    <Button
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:onClick="decrement1"
+                        android:text="-" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="150dp"
+                    android:src="@drawable/white" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="20dp"
+                    android:text="LED White / $ 10" />
+
+                <LinearLayout
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginLeft="15dp"
+                        android:onClick="increment2"
+                        android:text="+" />
+
+                    <TextView
+                        android:id="@+id/ledw_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:text="0"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp" />
+
+                    <Button
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:onClick="decrement2"
+                        android:text="-" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
         </LinearLayout>
-
-
-
-        
-
-        <LinearLayout
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:onClick="increment"
-                android:text="+" />
-
-            <TextView
-                android:id="@+id/quantity2_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:text="0"
-                android:textColor="@android:color/black"
-                android:textSize="16sp" />
-
-            <Button
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:onClick="decrement"
-                android:text="-" />
-
-        </LinearLayout>
-
-    </LinearLayout>
 
 
         <TextView
@@ -192,17 +230,37 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="16dp"
+            android:paddingLeft="8dp"
             android:paddingTop="16dp"
             android:text="0"
             android:textColor="@android:color/black"
             android:textSize="16sp" />
 
 
-        <Button
-            android:layout_width="wrap_content"
+        <LinearLayout
+
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="submitOrder"
-            android:text="Order" />
+            android:orientation="horizontal">
+
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="32dp"
+                android:layout_weight="1"
+                android:onClick="submitOrder"
+                android:text="Order" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="32dp"
+                android:layout_weight="1"
+                android:onClick="sendEmail"
+                android:text="E-mail" />
+
+        </LinearLayout>
 
     </LinearLayout>
 </ScrollView>

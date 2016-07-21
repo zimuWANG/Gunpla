@@ -1,0 +1,68 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="com.example.android.gunpla.Main2Activity"
+        android:background="#C8E6C9">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="RX-78-2 Gundam" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="150dp"
+                android:layout_weight="1"
+                android:src="@drawable/rx782" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="150dp"
+                android:layout_weight="1"
+                android:src="@drawable/rx782x1" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="The RX-78-2 Gundam is a fictional manned robot, introduced in 1979 in Yoshiyuki Tomino's and Sunrise's anime series Mobile Suit Gundam. In the series, it is a testbed weapon for the Earth Federation when it falls into the hands of Amuro Ray, the son of its designer in story (Tem Ray), who goes on to pilot it in the Earth Federation's war against the Principality of Zeon."
+         />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text= "As the success of the series began the Gundam franchise, the robot's design was the first of many variations in subsequent works. The design appearing in Mobile Suit Gundam serves as the iconic symbol of the Gundam franchise and sparked the creation of its multiple sequels and spinoffs."
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="As part of the 30th Anniversary of the Gundam series, the company officially announced a project on March 11, 2009 called Real-G planning to build a 1/1 real size scale Gundam in Japan, it was completed on June 9, 2009. The 18-meter tall statue was reconstructed in Shizuoka Prefecture and was dismantled in March 2011. It now stands in Odaiba along with a gift shop called "
+            />
+
+
+
+
+    </LinearLayout>
+</ScrollView>

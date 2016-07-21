@@ -1,7 +1,10 @@
 
 package com.example.android.gunpla;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.AlarmClock;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
@@ -19,7 +22,8 @@ import java.text.NumberFormat;
  */
 public class MainActivity extends ActionBarActivity {
 
-    int numberOfCoffees = 0;
+    int LEDnumberY = 0;
+    int LEDnumberW = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,61 +39,165 @@ public class MainActivity extends ActionBarActivity {
         EditText text = (EditText) findViewById(R.id.name_field);
         String name = text.getText().toString();
 
-        //Figure out if the user wants whipped cream
-        CheckBox whippedCreamCheckBox =(CheckBox) findViewById(R.id.whipped_cream_checkbox);
-        boolean hasWhippedCream = whippedCreamCheckBox.isChecked();
-        Log.v("MainActivity", "Has whipped cream:" + hasWhippedCream);
+        //Figure out if the user wants rx782
+        CheckBox rx782CreamCheckBox = (CheckBox) findViewById(R.id.rx782_checkbox);
+        boolean rx782 = rx782CreamCheckBox.isChecked();
+        Log.v("MainActivity", "Has rx782:" + rx782);
 
-        //Figure out if the user wants chocolate
-        CheckBox chocolateCheckBox =(CheckBox) findViewById(R.id.chocolate_checkbox);
-        boolean hasChocolate = chocolateCheckBox.isChecked();
-        Log.v("MainActivity", "Has chocolate:" + hasChocolate);
+        //Figure out if the user wants r10
+        CheckBox r10CheckBox = (CheckBox) findViewById(R.id.r10_checkbox);
+        boolean r10 = r10CheckBox.isChecked();
+        Log.v("MainActivity", "R10:" + r10);
+
+        //Figure out if the user wants gp01
+        CheckBox gp01CheckBox = (CheckBox) findViewById(R.id.gp01_checkbox);
+        boolean gp01 = gp01CheckBox.isChecked();
+        Log.v("MainActivity", "GP01:" + gp01);
+
+        //Figure out if the user wants d2
+        CheckBox d2CheckBox = (CheckBox) findViewById(R.id.d2_checkbox);
+        boolean d2 = d2CheckBox.isChecked();
+        Log.v("MainActivity", "D2:" + d2);
 
 
-        display(numberOfCoffees);
-        displayPrice(numberOfCoffees * 5);
-        String priceMessage =   "Name: " + name +"\n" + "Add whipped cream? " + hasWhippedCream + "\nAdd chocolate? " + hasChocolate + "\nQuantity: " + numberOfCoffees  + "\n"+ "total " + "$ " + numberOfCoffees*calculatePrice(hasWhippedCream,hasChocolate) + "\n" + "Thank you";
-        displayMessage(priceMessage);
+        display1(LEDnumberY);
+        display2(LEDnumberW);
+        int number = Quantity(rx782, r10, gp01, d2);
+        int totalCost = number * 50 + LEDnumberY * 10 + LEDnumberW * 10;
+        String OrderName = "Name: " + name;
+        String gunplaOne = "\nChoose RX-78-2 GUNDAM: " + rx782;
+        String gunplaTwo = "\nChoose ZETA GUNDAM: " + r10;
+        String gunplaThree = "\nChoose GUNDAM GP01: " + gp01;
+        String gunplaFour = "\nChoose AILE STRIKE GUNDAM: " + d2;
+        String quantity = "\nGunpla's quantities: " + number;
+        String total = "\ntotal: $" + totalCost;
+
+
+        displayMessage(OrderName + gunplaOne + gunplaTwo + gunplaThree + gunplaFour + quantity + total + "\nThank you");
     }
 
 
-
-    public void increment(View view) {
-        if (numberOfCoffees == 100){
-            Toast.makeText(this, "You cannot have more than 100 coffees", Toast.LENGTH_SHORT).show();
+    public void increment1(View view) {
+        if (LEDnumberY == 100) {
+            Toast.makeText(this, "You cannot have more than 100 LEDs", Toast.LENGTH_SHORT).show();
             return;
         }
-        numberOfCoffees = numberOfCoffees + 1 ;
-        display(numberOfCoffees);
+        LEDnumberY = LEDnumberY + 1;
+        display1(LEDnumberY);
     }
 
-    public void decrement(View view) {
-        if (numberOfCoffees <= 1){
-            Toast.makeText(this, "You cannot have less than 1 coffees", Toast.LENGTH_SHORT).show();
+    public void decrement1(View view) {
+        if (LEDnumberY <= 0) {
+            Toast.makeText(this, "You cannot have less than 0 LEDs", Toast.LENGTH_SHORT).show();
             return;
         }
-        numberOfCoffees = numberOfCoffees - 1 ;
-        display(numberOfCoffees);
+        LEDnumberY = LEDnumberY - 1;
+        display1(LEDnumberY);
+    }
+
+
+    public void increment2(View view) {
+        if (LEDnumberW == 100) {
+            Toast.makeText(this, "You cannot have more than 100 LEDs", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        LEDnumberW = LEDnumberW + 1;
+        display2(LEDnumberW);
+    }
+
+    public void decrement2(View view) {
+        if (LEDnumberW <= 0) {
+            Toast.makeText(this, "You cannot have less than 0 LEDs", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        LEDnumberW = LEDnumberW - 1;
+        display2(LEDnumberW);
+    }
+
+
+    public int Quantity(boolean a, boolean b, boolean c, boolean d) {
+
+        int number = 0;
+
+        if (a) {
+            number = number + 1;
+        }
+
+        if (b) {
+            number = number + 1;
+        }
+
+        if (c) {
+            number = number + 1;
+        }
+
+        if (d) {
+            number = number + 1;
+        }
+
+        return number;
+    }
+
+    public void sendEmail(View view) {
+
+        EditText text = (EditText) findViewById(R.id.name_field);
+        String name = text.getText().toString();
+
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:"));//only email apps should handle this
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Gunpla order for" + name);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
 
     }
 
 
+    public void rx78(View view) {
+
+        EditText text = (EditText) findViewById(R.id.name_field);
+        String name = text.getText().toString();
+        Intent myIntent = new Intent(MainActivity.this, Main2Activity.class);
+        MainActivity.this.startActivity(myIntent);
+    }
+
+    public void r10(View view) {
+
+        EditText text = (EditText) findViewById(R.id.name_field);
+        String name = text.getText().toString();
+        Intent myIntent = new Intent(MainActivity.this, Main22Activity.class);
+        MainActivity.this.startActivity(myIntent);
+    }
+
+    public void gp01(View view) {
+
+        EditText text = (EditText) findViewById(R.id.name_field);
+        String name = text.getText().toString();
+        Intent myIntent = new Intent(MainActivity.this, Main23Activity.class);
+        MainActivity.this.startActivity(myIntent);
+    }
+
+    public void d2(View view) {
+
+        EditText text = (EditText) findViewById(R.id.name_field);
+        String name = text.getText().toString();
+        Intent myIntent = new Intent(MainActivity.this, Main24Activity.class);
+        MainActivity.this.startActivity(myIntent);
+    }
 
     /**
      * This method displays the given quantity value on the screen.
      */
-    private void display(int number) {
-        TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
+    private void display1(int number) {
+        TextView quantityTextView = (TextView) findViewById(R.id.ledy_text_view);
         quantityTextView.setText("" + number);
     }
 
-    /**
-     * This method displays the given price on the screen.
-     */
-    private void displayPrice(int number) {
-        TextView priceTextView = (TextView) findViewById(R.id.orderSummary_text_view);
-        priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
+    private void display2(int number) {
+        TextView quantityTextView = (TextView) findViewById(R.id.ledw_text_view);
+        quantityTextView.setText("" + number);
     }
+
 
     /**
      * This method displays the given text on the screen.
@@ -103,12 +211,12 @@ public class MainActivity extends ActionBarActivity {
 
         int basePrice = 5;
 
-        if(hasWhippedCream){
+        if (hasWhippedCream) {
             basePrice = basePrice + 1;
         }
 
-        if(hasChocolate){
-            basePrice = basePrice +2;
+        if (hasChocolate) {
+            basePrice = basePrice + 2;
         }
 
         return basePrice;
